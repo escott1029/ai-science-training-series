@@ -138,11 +138,36 @@ Graph compilation: 100%|██████████| 100/100 [00:00<00:00]
 Accuracy on test set: 97.11%
 ```
 
-Output for training with batch size = 2:
+Output for training with batch size = 2, which looks like there might be overfitting:
 
+```
+Epochs:   0%|          | 0/10 [00:00<?,[21:12:44.930] [poptorch:cpp] [warning] [DISPATCHER] Type coerced from Long to Int for tensor id 10
+Graph compilation: 100%|██████████| 100/100 [00:00<00:00]
+Epochs: 100%|██████████| 10/10 [01:25<00:00,  8.54s/it]
+Graph compilation: 100%|██████████| 100/100 [00:00<00:00]                          
+ 86%|████████▌ | 107/125 [00:TrainingModelWithLoss(00:00]
+  (model): Network(
+    (layer1): Block(
+      (conv): Conv2d(1, 32, kernel_size=(3, 3), stride=(1, 1))
+      (pool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (relu): ReLU()
+    )
+    (layer2): Block(
+      (conv): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1))
+      (pool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (relu): ReLU()
+    )
+    (layer3): Linear(in_features=1600, out_features=128, bias=True)
+    (layer3_act): ReLU()
+    (layer3_dropout): Dropout(p=0.5, inplace=False)
+    (layer4): Linear(in_features=128, out_features=10, bias=True)
+    (softmax): Softmax(dim=1)
+  )
+  (loss): CrossEntropyLoss()
+)
+Accuracy on test set: 97.43%
 
-
-
+```
 
 
 
